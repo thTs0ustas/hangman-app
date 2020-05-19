@@ -14,3 +14,8 @@ export const settingWord = (word) => ({
   type: "SETTING_WORD",
   payload: { word },
 });
+
+export const settingGaps = (gaps) => ({
+  type: "SETTING_GAPS",
+  payload: { gaps },
+});

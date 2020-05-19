@@ -1,5 +1,6 @@
 const init = {
   word: "",
+  gaps:'',
   tries: 0,
   wrongTries: 0,
   status: "",
@@ -17,6 +18,11 @@ export const reducer = (state = init, action) => {
       return {
         ...state,
         word: action.payload.word,
+      };
+      case "SETTING_GAPS":
+      return {
+        ...state,
+        gaps: action.payload.gaps,
       };
     default:
       return state;
