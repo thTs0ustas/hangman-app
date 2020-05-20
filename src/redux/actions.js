@@ -17,14 +17,19 @@ export const settingWord = (word) => ({
 
 export const settingGaps = (gaps) => ({
   type: "SETTING_GAPS",
-  payload: { gaps },
+  payload: gaps,
 });
 
-export const pressingButton = (letter) => ({
-  type: "PRESSING_BUTTON",
+export const settingLetter = (letter) => ({
+  type: "SETTING_LETTER",
   payload: letter,
 });
 
-export const pressingWrongButton = () => ({
-  type: "PRESSING_THE_WRONG_BUTTON",
+export const wrongTry = () => ({
+  type: "WRONG_TRY",
+});
+
+export const correctTry = (correctLetter) => ({
+  type: "CORRECT_LETTER",
+  payload: correctLetter,
 });

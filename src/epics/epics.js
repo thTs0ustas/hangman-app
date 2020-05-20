@@ -1,6 +1,11 @@
 import { map, mergeMap, filter, mapTo } from "rxjs/operators";
 import { ajax } from "rxjs/ajax";
-import { settingWord, pressingWrongButton } from "../redux/actions";
+import {
+  settingWord,
+  settingGaps,
+  wrongTry,
+  correctTry,
+} from "../redux/actions";
 import { ofType, combineEpics } from "redux-observable";
 import { iif } from "rxjs";
 
@@ -20,20 +25,25 @@ const epicWords = (action$) =>
 
 const epicTries = (action$, state$) =>
   action$.pipe(
-    ofType("PRESSING_BUTTON"),
-    mergeMap(
-      (actions) => filter(() => state$.includes(actions.payload)),
-      mapTo(pressingWrongButton())
-    )
+    ofType("SETTING_WORD"),
+    map((action) => {
+      const gapsArray = Array(action.payload.length).fill("_ ");
+      return settingGaps(gapsArray);
+    })
+  );
+
+const epicLetters = (action$, state$) =>
+  action$.pipe(
+    ofType("SETTING_LETTER"),
+    map((action) => {
+      if (!state$.value.word.includes(action.payload)) {
+        return wrongTry();
+      } else {
+        return correctTry(action.payload);
+      }
+    })
   );
 
 export default combineEpics(epicWords, epicTries);
 
-/* const epicGaps = (action$) =>
-  action$.pipe(
-    ofType("SETTING_WORD"),
-    mergeMap(({ payload }) => {
-      const array$ = Array(payload.length).fill("_ ").join("");
-      return mapTo(settingGaps(array$));
-    })
-  ); */
+export default combineEpics(epicWords, epicGaps, epicLetters);

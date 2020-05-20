@@ -1,22 +1,37 @@
 import React from "react";
 import { connect } from "react-redux";
-import { letsStart, pressingButton } from "../redux/actions";
-import { Letters } from "./Letters";
+import { letsStart, settingLetter } from "../redux/actions";
+import { Button } from "./Button";
+import "./words.css";
 
-const Words = ({ tries, pressingButton, word, letsStart }) => {
-  const gapWord = Array(word.length).fill("_ ").join("");
-  const letterString = "abcdefghijklmnopqrstuvwxyz".split("");
-
+const Words = ({
+  tries,
+  gaps,
+  status,
+  letsStart,
+  settingLetter,
+  wrongTries,
+}) => {
+  const letters = "abcdefghijklmnopqrstuxwyz".split("");
   return (
     <div>
+      <h3>{`Status: ${status || "Loading...."}`}</h3>
       <div>
         <h4>{`Number of tries: ${tries}`}</h4>
-        <h4>{gapWord}</h4>
+        <h4>{`Number of wrong tries: ${wrongTries}`}</h4>
+        <h4>{gaps}</h4>
       </div>
-      {letterString.map((e, index) => (
-        <Letters key={index} letter={e} onClick={() => pressingButton(e)} />
-      ))}
-      <button onClick={letsStart}>Lets Start</button>
+      <div className="letters">
+        {letters.map((letter, index) => (
+          <Button
+            key={index}
+            value={letter}
+            onClick={() => settingLetter(letter)}
+          />
+        ))}
+      </div>
+
+      <button onClick={letsStart}>Press</button>
     </div>
   );
 };
@@ -25,5 +40,5 @@ const mapStateToProps = (state) => state;
 
 export default connect(mapStateToProps, {
   letsStart,
-  pressingButton,
+  settingLetter,
 })(Words);
