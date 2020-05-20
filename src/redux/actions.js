@@ -12,10 +12,26 @@ export const settingGame = () => ({
 
 export const settingWord = (word) => ({
   type: "SETTING_WORD",
-  payload: { word },
+  payload: word ,
 });
 
 export const settingGaps = (gaps) => ({
   type: "SETTING_GAPS",
-  payload: { gaps },
+  payload: gaps ,
+});
+
+
+export const settingLetter = (letter) => ({
+  type: "SETTING_LETTER",
+  payload: letter ,
+});
+
+export const wrongTry =()=>({
+  type: "WRONG_TRY",
+  
+});
+
+export const correctTry = (correctLetter)=>({
+  type: "CORRECT_LETTER",
+  payload: correctLetter
 });

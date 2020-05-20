@@ -1,7 +1,8 @@
 import { map, mergeMap } from "rxjs/operators";
 import { ajax } from "rxjs/ajax";
-import { settingWord } from "../redux/actions";
+import { settingWord,settingGaps,wrongTry,correctTry } from "../redux/actions";
 import { ofType, combineEpics } from "redux-observable";
+import { iif } from "rxjs";
 
 
 
@@ -12,17 +13,30 @@ import { ofType, combineEpics } from "redux-observable";
       ajax
         .getJSON("https://random-word-api.herokuapp.com/word?number=10")
         .pipe(
-          map((response) => settingWord(response[2]))
-        )
-    )
+          map((response) => settingWord(response[Math.floor(Math.random()*10)]))
+        ))
   );
 
   const epicGaps = action$ =>
   action$.pipe(
     ofType('SETTING_WORD'),
-    map(action=> Array(action.length).fill('_ '))
+    map(action=> {
+      const gapsArray = Array(action.payload.length).fill('_ ')
+      return settingGaps(gapsArray)
+    })
+  )
+
+  const epicLetters = (action$, state$) =>
+  action$.pipe(
+    ofType('SETTING_LETTER'),
+    map(action=> {
+      if (!state$.value.word.includes(action.payload)){
+        return wrongTry()
+      }else{
+        return correctTry(action.payload)
+      }
+    })
   )
 
 
-
-export default combineEpics(epicWords,epicGaps) ;
+export default combineEpics(epicWords, epicGaps, epicLetters) ;
