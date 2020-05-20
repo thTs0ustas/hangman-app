@@ -12,10 +12,19 @@ export const settingGame = () => ({
 
 export const settingWord = (word) => ({
   type: "SETTING_WORD",
-  payload: { word },
+  payload: word,
 });
 
 export const settingGaps = (gaps) => ({
   type: "SETTING_GAPS",
   payload: { gaps },
+});
+
+export const pressingButton = (letter) => ({
+  type: "PRESSING_BUTTON",
+  payload: letter,
+});
+
+export const pressingWrongButton = () => ({
+  type: "PRESSING_THE_WRONG_BUTTON",
 });
