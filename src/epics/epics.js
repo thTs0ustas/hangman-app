@@ -44,6 +44,4 @@ const epicLetters = (action$, state$) =>
     })
   );
 
-export default combineEpics(epicWords, epicTries);
-
-export default combineEpics(epicWords, epicGaps, epicLetters);
+export default combineEpics(epicWords, epicTries, epicLetters);
