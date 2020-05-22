@@ -31,11 +31,8 @@ export const reducer = (state = init, action) => {
           wrongTries:state.wrongTries +1
         };
      case "CORRECT_LETTER":
-      const index = state.gaps.indexOf(state.word.indexOf(action.payload))
-      const lastIndex = state.gaps.indexOf(state.word.lastIndexOf(action.payload))
-      return{
+      return {
         ...state,
-        gaps: [state.gaps[state.gaps.indexOf(state.word.indexOf(action.payload))]=action.payload,...state.gaps]
       } 
     default:
       return state;

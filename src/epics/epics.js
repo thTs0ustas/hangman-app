@@ -2,7 +2,6 @@ import { map, mergeMap } from "rxjs/operators";
 import { ajax } from "rxjs/ajax";
 import { settingWord,settingGaps,wrongTry,correctTry } from "../redux/actions";
 import { ofType, combineEpics } from "redux-observable";
-import { iif } from "rxjs";
 
 
 
