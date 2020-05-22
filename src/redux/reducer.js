@@ -1,6 +1,6 @@
 const init = {
   word: "",
-  gaps:[],
+  gaps: [],
   tries: 0,
   wrongTries: 0,
   status: "",
@@ -23,7 +23,7 @@ export const reducer = (state = init, action) => {
       return {
         ...state,
         gaps: action.payload,
-        status: 'Lets Play'
+        status: "Lets Play",
       };
     case "WRONG_TRY":
         return {
