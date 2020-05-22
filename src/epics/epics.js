@@ -7,7 +7,6 @@ import {
   correctTry,
 } from "../redux/actions";
 import { ofType, combineEpics } from "redux-observable";
-import { iif } from "rxjs";
 
 const epicWords = (action$) =>
   action$.pipe(
