@@ -1,10 +1,11 @@
-import { map, mergeMap, filter, mapTo } from "rxjs/operators";
+import { map, mergeMap } from "rxjs/operators";
 import { ajax } from "rxjs/ajax";
 import {
   settingWord,
   settingGaps,
   wrongTry,
   correctTry,
+  settingNewGaps,
 } from "../redux/actions";
 import { ofType, combineEpics } from "redux-observable";
 
@@ -22,7 +23,7 @@ const epicWords = (action$) =>
     )
   );
 
-const epicTries = (action$, state$) =>
+const epicTries = (action$) =>
   action$.pipe(
     ofType("SETTING_WORD"),
     map((action) => {
@@ -42,5 +43,23 @@ const epicLetters = (action$, state$) =>
       }
     })
   );
+const epicCorrectness = (action$, state$) =>
+  action$.pipe(
+    ofType("CORRECT_LETTER"),
+    map((action) => {
+      const { word, guess } = state$.value;
+      let newGuess = [...guess, action.payload];
 
-export default combineEpics(epicWords, epicTries, epicLetters);
+      const correctness = (word, guess) => {
+        let guessed = [];
+        let newWord = word.split("");
+        newWord.map((letter) =>
+          guess.includes(letter) ? guessed.push(letter) : guessed.push("_")
+        );
+        return guessed.join(" ");
+      };
+      return settingNewGaps(correctness(word, newGuess));
+    })
+  );
+
+export default combineEpics(epicWords, epicTries, epicLetters, epicCorrectness);

@@ -33,3 +33,8 @@ export const correctTry = (correctLetter) => ({
   type: "CORRECT_LETTER",
   payload: correctLetter,
 });
+
+export const settingNewGaps = (newGap) => ({
+  type: "SETTING_NEW_GAPS",
+  payload: newGap,
+});

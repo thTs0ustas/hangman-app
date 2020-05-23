@@ -1,11 +1,11 @@
 const init = {
   word: "",
-  gaps: [],
   tries: 0,
+  guess: [],
   wrongTries: 0,
   status: "",
 };
-
+init.gaps = Array(init.word.length).fill("_").join(" ");
 export const reducer = (state = init, action) => {
   switch (action.type) {
     case "SETTING_GAME":
@@ -22,18 +22,25 @@ export const reducer = (state = init, action) => {
     case "SETTING_GAPS":
       return {
         ...state,
-        gaps: action.payload,
+        gaps: Array(action.payload.length).fill("_").join(" "),
         status: "Lets Play",
       };
-    case "WRONG_TRY":
-        return {
-          ...state,
-          wrongTries:state.wrongTries +1
-        };
-     case "CORRECT_LETTER":
+    case "SETTING_LETTER":
       return {
         ...state,
-      } 
+        tries: state.tries + 1,
+        guess: [...state.guess, action.payload],
+      };
+    case "WRONG_TRY":
+      return {
+        ...state,
+        wrongTries: state.wrongTries + 1,
+      };
+    case "SETTING_NEW_GAPS":
+      return {
+        ...state,
+        gaps: action.payload,
+      };
     default:
       return state;
   }
