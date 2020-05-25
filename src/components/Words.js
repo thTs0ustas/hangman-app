@@ -41,16 +41,17 @@ const Words = ({
   };
 
   return (
-    <div>
+    <div className='gameContainer'>
       <div className="stringsThatShowStaff">
-        <h3>{`Status: ${status || "Loading...."}`}</h3>
-        <h4>{`Number of wrong tries: ${wrongTries}`}</h4>
-        <h4>{`Your Guesses: ${`${guess} `}`}</h4>
-        <h4>{gaps}</h4>
+        <h4>{`Status: ${status || "Loading...."}`}</h4>
+        <p>{`Number of wrong tries: ${wrongTries}`}</p>
+        <p>{`Your Guesses: ${`${guess} `}`}</p>
+        <h4>{`Word: ${gaps}`}</h4>
       </div>
       <div className="letters">
         {letters.map((letter, index) => (
           <Button
+            style={ {display: guess.includes(letter)? 'none':'inherit'} }
             type="button"
             key={index}
             value={letter}
