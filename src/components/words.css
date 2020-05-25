@@ -21,8 +21,7 @@ justify-content: center;
 align-items: center;
 
 }
-.stringsThatShowStaff{
-    
+.stringsThatShowsStaff{
     display: inline-block;
     flex-direction: column;
 }

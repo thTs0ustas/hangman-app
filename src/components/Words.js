@@ -42,7 +42,7 @@ const Words = ({
 
   return (
     <div className='gameContainer'>
-      <div className="stringsThatShowStaff">
+      <div className="stringsThatShowsStaff">
         <h4>{`Status: ${status || "Loading...."}`}</h4>
         <p>{`Number of wrong tries: ${wrongTries}`}</p>
         <p>{`Your Guesses: ${`${guess} `}`}</p>

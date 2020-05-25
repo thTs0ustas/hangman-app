@@ -75,7 +75,7 @@ const epicWinningOrLossing = (action$, state$) =>
       let newStatus =
         word === undefined || tries === 0
           ? status
-          : !gaps.includes("_ ")
+          : !gaps.includes("_")
           ? winnerStatus
           : wrongTries === 6
           ? losserStatus
