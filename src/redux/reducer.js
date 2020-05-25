@@ -6,6 +6,7 @@ const init = {
   status: "",
 };
 init.gaps = Array(init.word.length).fill("_").join(" ");
+
 export const reducer = (state = init, action) => {
   switch (action.type) {
     case "SETTING_GAME":
@@ -14,6 +15,8 @@ export const reducer = (state = init, action) => {
         tries: action.payload.tries,
         wrongTries: action.payload.wrongTries,
       };
+    case "RESTART":
+      return Object.assign({}, init);
     case "SETTING_WORD":
       return {
         ...state,
@@ -40,6 +43,11 @@ export const reducer = (state = init, action) => {
       return {
         ...state,
         gaps: action.payload,
+      };
+    case "WINNER_OR_LOSSER":
+      return {
+        ...state,
+        status: action.payload,
       };
     default:
       return state;

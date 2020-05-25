@@ -9,7 +9,9 @@ export const settingGame = () => ({
     wrongTries: 0,
   },
 });
-
+export const restart = () => ({
+  type: "RESTART",
+});
 export const settingWord = (word) => ({
   type: "SETTING_WORD",
   payload: word,
@@ -37,4 +39,12 @@ export const correctTry = (correctLetter) => ({
 export const settingNewGaps = (newGap) => ({
   type: "SETTING_NEW_GAPS",
   payload: newGap,
+});
+
+export const settingWinnerOrLosser = () => ({
+  type: "SETTING_WINNER_LOSSER",
+});
+export const winnerOrLosser = (newStaus) => ({
+  type: "WINNER_OR_LOSSER",
+  payload: newStaus,
 });

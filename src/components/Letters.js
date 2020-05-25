@@ -1,5 +1,5 @@
 import React from "react";
 
-export const Letters = ({ letter, onClick }) => {
-  return <button onClick={onClick}>{letter}</button>;
+export const Letters = ({ value, onClick }) => {
+  return <button onClick={onClick}>{value}</button>;
 };

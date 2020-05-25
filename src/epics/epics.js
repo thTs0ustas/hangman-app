@@ -1,10 +1,12 @@
-import { map, mergeMap } from "rxjs/operators";
+import { map, mergeMap, mapTo } from "rxjs/operators";
 import { ajax } from "rxjs/ajax";
 import {
+  letsStart,
   settingWord,
   settingGaps,
   wrongTry,
   correctTry,
+  winnerOrLosser,
   settingNewGaps,
 } from "../redux/actions";
 import { ofType, combineEpics } from "redux-observable";
@@ -43,6 +45,7 @@ const epicLetters = (action$, state$) =>
       }
     })
   );
+
 const epicCorrectness = (action$, state$) =>
   action$.pipe(
     ofType("CORRECT_LETTER"),
@@ -62,4 +65,32 @@ const epicCorrectness = (action$, state$) =>
     })
   );
 
-export default combineEpics(epicWords, epicTries, epicLetters, epicCorrectness);
+const epicWinningOrLossing = (action$, state$) =>
+  action$.pipe(
+    ofType("SETTING_WINNER_LOSSER"),
+    map(() => {
+      const { gaps, word, tries, status, wrongTries } = state$.value;
+      let winnerStatus = "We have a Winner !!!";
+      let losserStatus = "Aaand I'm dead !!!";
+      let newStatus =
+        word === undefined || tries === 0
+          ? status
+          : !gaps.includes("_ ")
+          ? winnerStatus
+          : wrongTries === 6
+          ? losserStatus
+          : status;
+      return winnerOrLosser(newStatus);
+    })
+  );
+const epicRestart = (action$) =>
+  action$.pipe(ofType("RESTART"), mapTo(letsStart()));
+
+export default combineEpics(
+  epicWords,
+  epicTries,
+  epicLetters,
+  epicCorrectness,
+  epicWinningOrLossing,
+  epicRestart
+);
