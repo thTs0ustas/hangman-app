@@ -52,7 +52,6 @@ const epicCorrectness = (action$, state$) =>
     map((action) => {
       const { word, guess } = state$.value;
       let newGuess = [...guess, action.payload];
-
       const correctness = (word, guess) => {
         let guessed = [];
         let newWord = word.split("");
