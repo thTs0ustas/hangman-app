@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import {
   letsStart,
@@ -22,23 +22,7 @@ const Words = ({
 }) => {
   const letters = "abcdefghijklmnopqrstuxwyz".split("");
 
-  useEffect(() => {
-    let fn = () => settingWinnerOrLosser();
-    fn();
-  }, [settingWinnerOrLosser, guess]);
-
-  const letsSeeIfItCanBePressed = (letter) => {
-    if (
-      !status ||
-      guess.includes(letter) ||
-      status === "We have a Winner !!!" ||
-      status === "Aaand I'm dead !!!"
-    ) {
-      return;
-    } else {
-      settingLetter(letter);
-    }
-  };
+  const letsSeeIfItCanBePressed = (letter) => settingLetter(letter);
 
   return (
     <div className="gameContainer">
@@ -51,11 +35,21 @@ const Words = ({
       <div className="letters">
         {letters.map((letter, index) => (
           <Button
-            style={{ display: guess.includes(letter) ? "none" : "inherit" }}
             type="button"
+            disabled={
+              !status ||
+              guess.includes(letter) ||
+              status === "We have a Winner !!!" ||
+              status === "Aaand I'm dead !!!"
+            }
             key={index}
             value={letter}
-            onClick={() => letsSeeIfItCanBePressed(letter)}
+            onClick={() => [
+              letsSeeIfItCanBePressed(letter),
+              gaps.includes("_") &&
+                !wrongTries === 6 &&
+                settingWinnerOrLosser(),
+            ]}
           />
         ))}
       </div>

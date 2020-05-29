@@ -40,9 +40,8 @@ const epicLetters = (action$, state$) =>
     map((action) => {
       if (!state$.value.word.includes(action.payload)) {
         return wrongTry();
-      } else {
-        return correctTry(action.payload);
       }
+      return correctTry(action.payload);
     })
   );
 
