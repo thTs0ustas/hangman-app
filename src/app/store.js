@@ -1,12 +1,17 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { reducer } from "../redux/reducer";
- import { createEpicMiddleware } from "redux-observable";
+import {configureStore} from "@reduxjs/toolkit";
+import {reducer} from "../redux/reducer";
+import {createEpicMiddleware} from "redux-observable";
 import epicWords from "../epics/epics";
 
-const epicMiddleware = createEpicMiddleware(); 
+const epicMiddleware = createEpicMiddleware();
 
 export default configureStore({
-  reducer,
-   middleware: [epicMiddleware], 
+    reducer,
+    middleware: [epicMiddleware],
 });
- epicMiddleware.run(epicWords); 
+epicMiddleware.run(epicWords);
+
+
+
+
+ 

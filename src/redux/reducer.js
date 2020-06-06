@@ -44,7 +44,7 @@ export const reducer = (state = init, action) => {
         ...state,
         gaps: action.payload,
       };
-    case "WINNER_OR_LOSSER":
+    case "WINNER_OR_LOSER":
       return {
         ...state,
         status: action.payload,
