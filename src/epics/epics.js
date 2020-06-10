@@ -40,9 +40,8 @@ const epicLetters = (action$, state$) =>
     map((action) => {
       if (!state$.value.word.includes(action.payload)) {
         return wrongTry();
-      } else {
-        return correctTry(action.payload);
       }
+      return correctTry(action.payload);
     })
   );
 
@@ -52,7 +51,6 @@ const epicCorrectness = (action$, state$) =>
     map((action) => {
       const { word, guess } = state$.value;
       let newGuess = [...guess, action.payload];
-
       const correctness = (word, guess) => {
         let guessed = [];
         let newWord = word.split("");
