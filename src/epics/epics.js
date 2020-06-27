@@ -68,19 +68,22 @@ const epicWinningOrLossing = (action$, state$) =>
     ofType("SETTING_WINNER_LOSSER"),
     map(() => {
       const { gaps, word, tries, status, wrongTries } = state$.value;
-      let winnerStatus = "We have a Winner !!!";
-      let losserStatus = "Aaand I'm dead !!!";
-      let newStatus =
-        word === undefined || tries === 0
-          ? status
-          : !gaps.includes("_")
-          ? winnerStatus
-          : wrongTries === 6
-          ? losserStatus
-          : status;
-      return winnerOrLosser(newStatus);
+      let newStatus = status;
+      if (word === undefined || tries === 0) {
+        return winnerOrLosser(newStatus);
+      } else if (!gaps.includes("_")) {
+        newStatus = "We have a Winner !!!";
+        winnerOrLosser(newStatus);
+      } else if (wrongTries === 6) {
+        newStatus = "Aaand I'm dead !!!";
+        winnerOrLosser(newStatus);
+      } else {
+        return winnerOrLosser(newStatus);
+      }
+      console.log("newStatus", newStatus);
     })
   );
+
 const epicRestart = (action$) =>
   action$.pipe(ofType("RESTART"), mapTo(letsStart()));
 

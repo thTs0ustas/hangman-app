@@ -47,7 +47,7 @@ export const settingWinnerOrLosser = () => ({
   type: "SETTING_WINNER_LOSSER",
 });
 
-export const winnerOrLosser = (newStaus) => ({
+export const winnerOrLosser = (newStatus) => ({
   type: "WINNER_OR_LOSSER",
-  payload: newStaus,
+  payload: newStatus,
 });

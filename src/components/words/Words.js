@@ -1,34 +1,29 @@
 import React from "react";
-import { connect } from "react-redux";
-import {
-  letsStart,
-  settingLetter,
-  settingWinnerOrLosser,
-  restart,
-} from "../../redux/actions";
+
 import { Button } from "../button/Button";
+
 import "./words.css";
 
-const Words = ({
-  restart,
+export const Words = ({
+  wrongTries,
   guess,
   gaps,
   word,
   status,
-  letsStart,
-  settingLetter,
-  wrongTries,
-  settingWinnerOrLosser,
+  setStart,
+  setRestart,
+  winnerLosser,
+  setLetter,
 }) => {
   const letters = "abcdefghijklmnopqrstuvxwyz".split("");
 
-  const letsSeeIfItCanBePressed = (letter) => settingLetter(letter);
+  const letsSeeIfItCanBePressed = (letter) => setLetter(letter);
 
   return (
     <div className="gameContainer">
       <div className="stringsThatShowsStaff">
         <h4>{`Status: ${status || "Loading...."}`}</h4>
-        <p>{`Number of wrong tries: ${wrongTries}`}</p>
+        <p>{`Number of wrong tries: ${wrongTries || 0}`}</p>
         <p>{`Your Guesses: ${`${guess} `}`}</p>
         <h4>{`Word: ${gaps}`}</h4>
       </div>
@@ -44,28 +39,16 @@ const Words = ({
             }
             key={index}
             value={letter}
-            onClick={() => [
-              letsSeeIfItCanBePressed(letter),
-              settingWinnerOrLosser(),
-            ]}
+            onClick={() => [letsSeeIfItCanBePressed(letter), winnerLosser()]}
           />
         ))}
       </div>
-      <button disabled={word} onClick={letsStart}>
+      <button disabled={word} onClick={setStart}>
         Start Game
       </button>
-      <button disabled={!word} onClick={restart}>
+      <button disabled={!word} onClick={setRestart}>
         Restart Game
       </button>
     </div>
   );
 };
-
-const mapStateToProps = (state) => state;
-
-export default connect(mapStateToProps, {
-  restart,
-  letsStart,
-  settingLetter,
-  settingWinnerOrLosser,
-})(Words);
