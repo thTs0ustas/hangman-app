@@ -43,11 +43,11 @@ export const settingNewGaps = (newGap) => ({
   payload: newGap,
 });
 
-export const settingWinnerOrLosser = () => ({
-  type: "SETTING_WINNER_LOSSER",
+export const settingWinnerOrLoser = () => ({
+  type: "SETTING_WINNER_LOSER",
 });
 
-export const winnerOrLosser = (newStatus) => ({
-  type: "WINNER_OR_LOSSER",
+export const winnerOrLoser = (newStatus) => ({
+  type: "WINNER_OR_LOSER",
   payload: newStatus,
 });
