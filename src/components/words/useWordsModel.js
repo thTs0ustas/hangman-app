@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {wordsSelector} from "./selector";
-import {letsStart, restart, settingLetter, settingWinnerOrLoser,} from "../../redux/actions";
+import {letsStart, restart, settingLetter, settingWinnerOrLoser} from "../../redux/actions";
 
 export const useWordsModel = () => {
   const dispatch = useDispatch();

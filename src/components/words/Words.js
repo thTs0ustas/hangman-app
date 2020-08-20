@@ -1,8 +1,10 @@
 import React from "react";
-
-import {Button} from "../button/Button";
-
+import {Buttons} from "../button/Button";
 import "./words.css";
+import {Grid} from "@material-ui/core";
+
+const letters = "abcdefghijklmnopqrstuvxwyz".split("");
+
 
 export const Words = ({
                           wrongTries,
@@ -12,42 +14,31 @@ export const Words = ({
                           status,
                           setStart,
                           setRestart,
-                          setLetter,
-                          winnerLoser
+                          letterMap
                       }) => {
-    const letters = "abcdefghijklmnopqrstuvxwyz".split("");
 
-    const letsSeeIfItCanBePressed = (letter) => setLetter(letter);
+
     return (
-        <div className="gameContainer">
+        <Grid  container  className="gameContainer">
             <div className="stringsThatShowsStaff">
                 <h4>{`Status: ${status || "Loading...."}`}</h4>
                 <p>{`Number of wrong tries: ${wrongTries || 0}`}</p>
                 <p>{`Your Guesses: ${`${guess} `}`}</p>
                 <h4>{`Word: ${gaps}`}</h4>
             </div>
-            <div className="letters">
-                {letters.map((letter, index) => (
-                    <Button
-                        type="button"
-                        disabled={
-                            !status ||
-                            guess.includes(letter) ||
-                            status === "We have a Winner !!!" ||
-                            status === "Aaand I'm dead !!!"
-                        }
-                        key={index}
-                        value={letter}
-                        onClick={() => [letsSeeIfItCanBePressed(letter), winnerLoser()]}
-                    />
-                ))}
-            </div>
-            <button disabled={word} onClick={setStart}>
-                Start Game
-            </button>
-            <button disabled={!word} onClick={setRestart}>
-                Restart Game
-            </button>
-        </div>
+            <Grid xs={10} container item>
+                {letterMap(letters)}
+            </Grid>
+            <Grid container item>
+                <Grid item sm={6}>
+                    <Buttons value={'Start'} disabled={word} onClick={setStart}/>
+                </Grid>
+                <Grid item sm={6}>
+                    <Buttons value={'Restart'} disabled={!word} onClick={setRestart}/>
+                </Grid>
+            </Grid>
+        </Grid>
     );
 };
+
+

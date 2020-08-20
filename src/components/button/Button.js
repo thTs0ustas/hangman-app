@@ -1,17 +1,17 @@
 import React from "react";
+import Button from "@material-ui/core/Button";
 import "./Button.css";
 
-export const Button = ({ onClick, value, style, disabled }) => {
+export const Buttons = ({ onClick, value, disabled }) => {
   return (
     <div className="buttonsContainer">
-      <button
+      <Button
         className="letterButtons"
         disabled={disabled}
-        style={style}
         onClick={onClick}
       >
         {value}
-      </button>
+      </Button>
     </div>
   );
 };

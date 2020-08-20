@@ -1,4 +1,4 @@
-import {map, mapTo, mergeMap} from "rxjs/operators";
+import {map, mapTo, switchMap} from "rxjs/operators";
 import {ajax} from "rxjs/ajax";
 import {
     correctTry,
@@ -14,7 +14,7 @@ import {combineEpics, ofType} from "redux-observable";
 const epicWords = (action$) =>
     action$.pipe(
         ofType("LETS_START"),
-        mergeMap(() =>
+        switchMap(() =>
             ajax
                 .getJSON("https://random-word-api.herokuapp.com/word?number=10")
                 .pipe(
