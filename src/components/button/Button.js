@@ -7,6 +7,7 @@ export const Buttons = ({ onClick, value, disabled }) => {
     <div className="buttonsContainer">
       <Button
         className="letterButtons"
+        color='primary'
         disabled={disabled}
         onClick={onClick}
       >

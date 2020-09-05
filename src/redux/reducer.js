@@ -31,13 +31,13 @@ export const reducer = (state = init, action) => {
     case "SETTING_LETTER":
       return {
         ...state,
-        tries: state.tries + 1,
+        tries: ++state.tries,
         guess: [...state.guess, action.payload],
       };
     case "WRONG_TRY":
       return {
         ...state,
-        wrongTries: state.wrongTries + 1,
+        wrongTries: ++state.wrongTries,
       };
     case "SETTING_NEW_GAPS":
       return {
