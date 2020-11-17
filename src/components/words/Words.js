@@ -28,7 +28,7 @@ export const Words = ({
               {`Status: ${status || "Loading...."}`}
            </Typography>
            <p>{`Number of wrong tries: ${wrongTries || 0}`}</p>
-           <p>{`Your Guesses: ${`${guess} `}`}</p>
+           <p>{`Your Guesses: ${guess}`}</p>
            <h4>{`Word: ${gaps}`}</h4>
         </CardContent>
         <Grid className={classes.item} xs={10}  container item>

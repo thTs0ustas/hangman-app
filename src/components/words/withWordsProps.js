@@ -1,6 +1,6 @@
 import React from "react";
 import {useWordsModel} from "./useWordsModel";
-import {Grid} from "@material-ui/core";
+//import {Grid} from "@material-ui/core";
 import {Buttons} from "../button/Button";
 
 const withWordsProps = (Component) => (props) => {
@@ -14,20 +14,20 @@ const withWordsProps = (Component) => (props) => {
   } = useWordsModel();
 
   const letterMap = (mapping) => mapping.map((letter, index) =>
-      <Grid  item xs={3}>
+      <React.Fragment key={index}>
         <Buttons variant='contained'
                  color='secondary'
                  disabled={
-                   !status ||
+                  !status ||
                    guess.includes(letter) ||
-                   status === "We have a Winner !!!" ||
-                   status === "Aaand I'm dead !!!"
+                   (status === "We have a Winner !!!") ||
+                   (status === "Aaand I'm dead !!!")
                  }
-                 key={index}
+
                  value={letter}
                  onClick={() => [setLetter(letter), winnerLoser()]}
         />
-      </Grid>)
+      </React.Fragment>)
 
   return (
     <Component

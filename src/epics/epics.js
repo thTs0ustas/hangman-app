@@ -51,19 +51,10 @@ const epicLetters = (action$, state$) =>
 const epicCorrectness = (action$, state$) =>
   action$.pipe(
     ofType("CORRECT_LETTER"),
-    map((action) => {
-       const {word, guess} = state$.value;
-       let newGuess = [...guess, action.payload];
-       const correctness = (word, guess) => {
-          let guessed = [];
-          let newWord = word.split("");
-          newWord.map((letter) =>
-            guess.includes(letter) ? guessed.push(letter) : guessed.push("_")
-          );
-          return guessed.join(" ");
-       };
-       return settingNewGaps(correctness(word, newGuess));
-    })
+    map(() =>
+       settingNewGaps(state$.value.word.split('')
+          .map(e=> state$.value.guess.includes(e)? `${e} ` : '_ ')
+          .join('')))
   );
 
 const epicWinningOrLosing = (action$, state$) =>
