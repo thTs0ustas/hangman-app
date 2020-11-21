@@ -3,8 +3,6 @@ import "./App.css";
 import { Game } from "./components/game/Game";
 import { Grid } from "@material-ui/core";
 
-import randomWords from "random-words";
-
 // const aBetterWay = (word, guessed) =>
 //    word.split('').map(e => guessed.includes(e) ? `${e} ` : '_ ').join('')
 

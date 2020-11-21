@@ -1,5 +1,5 @@
 import { map, mapTo, tap } from "rxjs/operators";
-import randomWords from "random-words";
+import { rword } from "rword";
 // import { switchMap } from "rxjs/operators";
 // import { ajax } from "rxjs/ajax";
 
@@ -34,7 +34,7 @@ import { combineEpics, ofType } from "redux-observable";
 const epicWords = (action$) =>
   action$.pipe(
     ofType("LETS_START"),
-    map(() => randomWords()),
+    map(() => rword.generate(1, { length: "4-12" })),
     tap((word) => console.log(word)),
     map((word) => settingWord(word))
   );
