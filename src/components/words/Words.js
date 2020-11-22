@@ -15,8 +15,6 @@ export const Words = ({
   setRestart,
   letterMap,
 }) => {
-  console.log(status);
-
   return (
     <div className="gameContainer">
       <h3>{`Status: ${status || "Press Start"}`}</h3>

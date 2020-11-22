@@ -11,7 +11,7 @@ const withWordsProps = (Component) => (props) => {
     winnerLoser,
     setLetter,
   } = useWordsModel();
-  console.log(words);
+
   const letterMap = (mapping) =>
     mapping.map((letter, index) => (
       <React.Fragment key={index}>
