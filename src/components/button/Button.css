@@ -1,10 +1,10 @@
 .letterButtons {
   width: 2em;
-  border-radius: 5px;
+  height: 2em;
   align-items: center;
 }
 .bigbutton {
-  width: 40%;
+  width: 130px;
   align-items: center;
 }
 .letterButtons:hover {
