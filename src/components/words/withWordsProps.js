@@ -1,7 +1,7 @@
 import React from "react";
 import { useWordsModel } from "./useWordsModel";
-//import {Grid} from "@material-ui/core";
 import { Buttons } from "../button/Button";
+import "./words.css";
 
 const withWordsProps = (Component) => (props) => {
   const {
@@ -16,8 +16,6 @@ const withWordsProps = (Component) => (props) => {
     mapping.map((letter, index) => (
       <React.Fragment key={index}>
         <Buttons
-          variant="contained"
-          color="secondary"
           disabled={
             !words.word ||
             tries.guess.includes(letter) ||

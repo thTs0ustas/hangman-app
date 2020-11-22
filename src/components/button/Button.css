@@ -1,18 +1,21 @@
-/*
-
 .letterButtons {
-    width: 30px;
-    box-sizing: border-box;
-    border-radius: 5px;
-    align-items: center;
-
+  width: 2em;
+  border-radius: 5px;
+  align-items: center;
+}
+.bigbutton {
+  width: 40%;
+  align-items: center;
 }
 .letterButtons:hover {
-    color: beige;
-    background-color: black;
+  color: beige;
+  background-color: black;
+}
+.bigbutton:hover {
+  color: beige;
+  background-color: black;
 }
 
-p{
-    margin-bottom: 20px;
+p {
+  margin-bottom: 20px;
 }
-*/
