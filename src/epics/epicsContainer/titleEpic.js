@@ -14,12 +14,10 @@ const epicWinningOrLosing = (action$, state$) =>
         game: { title },
       } = state$.value;
 
-      let newStatus = title;
-      if (!word || correctTries === 0) return newStatus;
-      if (!gaps.includes("_")) newStatus = "We have a Winner !!!";
-      if (wrongTries === 6) newStatus = "Aaand I'm dead !!!";
-
-      return newStatus;
+      if (!word || correctTries === 0) return title;
+      if (!gaps.includes("_")) return "We have a Winner !!!";
+      if (wrongTries === 6) return "Aaand you're dead !!!";
+      return title;
     }),
     map((new_status) => winnerOrLoser(new_status))
   );

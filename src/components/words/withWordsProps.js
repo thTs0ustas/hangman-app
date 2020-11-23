@@ -12,16 +12,14 @@ const withWordsProps = (Component) => (props) => {
     setLetter,
   } = useWordsModel();
 
+  const disable = (letter) =>
+    !words.word || tries.guess.includes(letter) || game.title !== "Lets Play";
+
   const letterMap = (mapping) =>
     mapping.map((letter, index) => (
       <React.Fragment key={index}>
         <Buttons
-          disabled={
-            !words.word ||
-            tries.guess.includes(letter) ||
-            game.title === "We have a Winner !!!" ||
-            game.title === "Aaand I'm dead !!!"
-          }
+          disabled={disable(letter)}
           value={letter}
           onClick={() => [setLetter(letter), winnerLoser()]}
         />

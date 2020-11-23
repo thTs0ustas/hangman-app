@@ -6,19 +6,15 @@ import { correctTry, settingGaps, settingNewGaps, wrongTry } from "../../redux";
 const epicTries = (action$) =>
   action$.pipe(
     ofType("SETTING_WORD"),
-    map((action) => {
-      const gapsArray = Array(action.payload.length).fill("_ ");
-      return settingGaps(gapsArray);
-    })
+    map((action) => settingGaps(Array(action.payload.length).fill("_ ")))
   );
 
 const epicLetters = (action$, state$) =>
   action$.pipe(
     ofType("SETTING_LETTER"),
     map((action) => {
-      if (!state$.value.words.word.includes(action.payload)) {
-        return wrongTry();
-      }
+      const { word } = state$.value.words;
+      if (!word.includes(action.payload)) return wrongTry();
       return correctTry(action.payload);
     })
   );
