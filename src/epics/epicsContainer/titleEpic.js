@@ -15,8 +15,8 @@ const epicWinningOrLosing = (action$, state$) =>
       } = state$.value;
 
       if (!word || correctTries === 0) return title;
-      if (!gaps.includes("_")) return "We have a Winner !!!";
-      if (wrongTries === 6) return "Aaand you're dead !!!";
+      if (!gaps.includes("_")) return "😁 you found the word !!!";
+      if (wrongTries === 6) return `😅 the word was "${word}"`;
       return title;
     }),
     map((new_status) => winnerOrLoser(new_status))

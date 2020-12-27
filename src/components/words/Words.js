@@ -20,12 +20,23 @@ export const Words = () => {
 
   return (
     <div className="gameContainer">
-      <h3>{status || "Press Start"}</h3>
+      <div
+        className={"status"}
+        style={{
+          height: 40,
+          textAlign: "center",
+          fontSize: 22,
+          marginTop: ".75rem",
+          fontWeight: "600",
+        }}
+      >
+        {status || "Press Start"}
+      </div>
 
       <h1 className="word">{gaps || "................."}</h1>
       <p>{`Retries Left: ${6 - wrongTries}`}</p>
       <p>
-        Your Guesses: <span>{guess}</span>
+        Your Guesses: <span>{`${guess} `}</span>
       </p>
 
       <div className="buttonsContainer">{letterMap(letters)}</div>

@@ -1,7 +1,7 @@
 import { INITIAL_STATE } from "../../INITIAL_STATE";
-import { createReducer } from "@reduxjs/toolkit";
-import { restart, settingGame, wrongTry } from "../game";
-import { settingLetter } from "./lettersAndGapsActions";
+// import { createReducer } from "@reduxjs/toolkit";
+// import { restart, settingGame, wrongTry } from "../game";
+// import { settingLetter } from "./lettersAndGapsActions";
 
 const init = {
   correctTries: INITIAL_STATE.tries,
