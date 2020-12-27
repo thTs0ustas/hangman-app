@@ -2,19 +2,22 @@ import React from "react";
 import "./words.css";
 
 import { Buttons } from "../button/Button";
+import { useWordsModel } from "./useWordsModel";
 
 const letters = "abcdefghijklmnopqrstuvxwyz".split("");
 
-export const Words = ({
-  wrongTries,
-  guess,
-  gaps,
-  word,
-  status,
-  setStart,
-  setRestart,
-  letterMap,
-}) => {
+export const Words = () => {
+  const {
+    letterMap,
+    word,
+    guess,
+    gaps,
+    setStart,
+    setRestart,
+    status,
+    wrongTries,
+  } = useWordsModel();
+
   return (
     <div className="gameContainer">
       <h3>{status || "Press Start"}</h3>
@@ -25,16 +28,16 @@ export const Words = ({
         Your Guesses: <span>{guess}</span>
       </p>
 
-      <div className={"buttonsContainer"}>{letterMap(letters)}</div>
+      <div className="buttonsContainer">{letterMap(letters)}</div>
       <div className="startResetButtons">
         <Buttons
-          bigbutton={true}
+          bigButton={true}
           value={"Start"}
           disabled={word}
           onClick={setStart}
         />
         <Buttons
-          bigbutton={true}
+          bigButton={true}
           value={"Restart"}
           disabled={!word}
           onClick={setRestart}

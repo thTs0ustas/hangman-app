@@ -3,18 +3,8 @@ import {
   SETTING_LETTER,
   SETTING_NEW_GAPS,
 } from "./lettersAndGapsActionTypes";
+import { createAction } from "@reduxjs/toolkit";
 
-export const settingGaps = (gaps) => ({
-  type: SETTING_GAPS,
-  payload: gaps,
-});
-
-export const settingLetter = (letter) => ({
-  type: SETTING_LETTER,
-  payload: letter,
-});
-
-export const settingNewGaps = (newGap) => ({
-  type: SETTING_NEW_GAPS,
-  payload: newGap,
-});
+export const settingGaps = createAction(SETTING_GAPS);
+export const settingLetter = createAction(SETTING_LETTER);
+export const settingNewGaps = createAction(SETTING_NEW_GAPS);

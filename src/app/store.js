@@ -1,13 +1,21 @@
 import { configureStore } from "@reduxjs/toolkit";
-//import { reducer } from "../redux/reducer";
 import { rootReducer } from "../redux";
 import { createEpicMiddleware } from "redux-observable";
 import rootEpics from "../epics";
+import { persistReducer} from "redux-persist";
+import storage from 'redux-persist/lib/storage'
 
 const epicMiddleware = createEpicMiddleware();
 
+const persistConfig = {
+  key:'root',
+  storage
+}
+const persistedReducer = persistReducer(persistConfig,rootReducer)
+
+
 export default configureStore({
-  reducer: rootReducer,
-  middleware: [epicMiddleware],
+    reducer: persistedReducer,
+    middleware: [epicMiddleware]
 });
 epicMiddleware.run(rootEpics);

@@ -1,11 +1,11 @@
 import React from "react";
 import "./Button.css";
 
-export const Buttons = ({ onClick, value, disabled, bigbutton }) => {
+export const Buttons = ({ onClick, value, disabled, bigButton }) => {
   return (
     <>
       <button
-        className={bigbutton === true ? "bigbutton" : "letterButtons"}
+        className={bigButton === true ? "bigButton" : "letterButtons"}
         disabled={disabled}
         onClick={onClick}
       >

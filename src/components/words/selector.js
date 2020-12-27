@@ -1,4 +1,2 @@
-export const wordsSelector = (state) => {
-  const { words, tries, game } = state;
-  return { words, tries, game };
-};
+export const wordsSelector = ({ words, tries, game }) => ({ words, tries, game })
+
