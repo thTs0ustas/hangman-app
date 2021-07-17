@@ -3,15 +3,15 @@ import { map, mapTo, tap } from "rxjs/operators";
 
 import { rword } from "rword";
 
-import { RESTART } from "../../redux/model/game";
+import { RESTART } from "../../redux/model";
 import { settingWord, letsStart } from "../../redux";
 
 const epicWords = (action$) =>
   action$.pipe(
     ofType("LETS_START"),
     map(() => rword.generate(1, { length: "4-12" })),
-    tap((word) => console.log(word)),
-    map((word) => settingWord(word))
+    tap(console.log),
+    map(settingWord)
   );
 
 const epicRestart = (action$) =>

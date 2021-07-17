@@ -19,7 +19,7 @@ const epicWinningOrLosing = (action$, state$) =>
       if (wrongTries === 6) return `😅 the word was "${word}"`;
       return title;
     }),
-    map((new_status) => winnerOrLoser(new_status))
+    map(winnerOrLoser)
   );
 
 export { epicWinningOrLosing };

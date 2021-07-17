@@ -12,10 +12,10 @@ const epicTries = (action$) =>
 const epicLetters = (action$, state$) =>
   action$.pipe(
     ofType("SETTING_LETTER"),
-    map((action) => {
+    map(({ payload }) => {
       const { word } = state$.value.words;
-      if (!word.includes(action.payload)) return wrongTry();
-      return correctTry(action.payload);
+      if (!word.includes(payload)) return wrongTry();
+      return correctTry(payload);
     })
   );
 
@@ -24,8 +24,8 @@ const epicCorrectness = (action$, state$) =>
     ofType("CORRECT_LETTER"),
     map(() =>
       settingNewGaps(
-        state$.value.words.word
-          .split("")
+        [...state$.value.words.word]
+          //.split("")
           .map((e) => (state$.value.tries.guess.includes(e) ? `${e} ` : "_ "))
           .join("")
       )

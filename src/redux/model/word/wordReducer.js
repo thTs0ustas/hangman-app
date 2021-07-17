@@ -1,4 +1,3 @@
-// import {SETTING_WORD} from "./actionTypes";
 import { INITIAL_STATE } from "../../INITIAL_STATE";
 import { createReducer } from "@reduxjs/toolkit";
 import { settingWord } from "./wordActions";
