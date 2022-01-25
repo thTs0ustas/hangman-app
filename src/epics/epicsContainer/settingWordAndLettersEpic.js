@@ -25,7 +25,6 @@ const epicCorrectness = (action$, state$) =>
     map(() =>
       settingNewGaps(
         [...state$.value.words.word]
-          //.split("")
           .map((e) => (state$.value.tries.guess.includes(e) ? `${e} ` : "_ "))
           .join("")
       )

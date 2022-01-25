@@ -1,6 +1,7 @@
 import React from "react";
 import "./Button.css";
 
+
 export const Buttons = ({ onClick, value, disabled, bigButton }) => {
   return (
     <>
