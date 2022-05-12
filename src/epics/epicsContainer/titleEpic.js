@@ -2,7 +2,7 @@ import { map } from 'rxjs/operators';
 import { ofType } from 'redux-observable';
 import { actionTypes, winnerOrLoser } from '../../features';
 
-const epicWinningOrLosing = (action$, state$) =>
+const refreshStatusEpic = (action$, state$) =>
   action$.pipe(
     ofType(actionTypes.STATUS_CHECK),
     map(() => {
@@ -20,4 +20,4 @@ const epicWinningOrLosing = (action$, state$) =>
     map(winnerOrLoser)
   );
 
-export { epicWinningOrLosing };
+export { refreshStatusEpic };

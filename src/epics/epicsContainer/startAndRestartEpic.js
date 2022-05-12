@@ -12,17 +12,17 @@ import {
   actionTypes,
 } from '../../features';
 
-const epicRestart = (action$) =>
+const restartEpic = (action$) =>
   action$.pipe(
     ofType(actionTypes.RESTART),
     mergeMap(() => [gameRestart(), wordsRestart(), letterGapsRestart()])
   );
 
-const epicWords = (action$) =>
+const newWordsEpic = (action$) =>
   action$.pipe(
     ofType(actionTypes.LETS_START),
     map(() => randomWords({ exactly: 1, join: ' ' })),
     mergeMap((word) => [settingWords(word), winnerOrLoser('Lets Play')])
   );
 
-export { epicWords, epicRestart };
+export { newWordsEpic, restartEpic };

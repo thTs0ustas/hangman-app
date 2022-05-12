@@ -9,13 +9,13 @@ import {
   wrongTries,
 } from '../../features';
 
-const epicTries = (action$) =>
+const settingGapsEpic = (action$) =>
   action$.pipe(
     ofType('word/settingWords'),
     map((action) => settingGaps(Array(action.payload.length).fill('_ ')))
   );
 
-const epicLetters = (action$, state$) =>
+const setLettersEpic = (action$, state$) =>
   action$.pipe(
     ofType(actionTypes.SET_LETTER),
     map(({ payload }) => {
@@ -26,7 +26,7 @@ const epicLetters = (action$, state$) =>
     })
   );
 
-const epicCorrectness = (action$, state$) =>
+const correctWordEpic = (action$, state$) =>
   action$.pipe(
     ofType('gapsAndLetters/settingLetter'),
     map(() =>
@@ -38,4 +38,4 @@ const epicCorrectness = (action$, state$) =>
     )
   );
 
-export { epicTries, epicCorrectness, epicLetters };
+export { settingGapsEpic, correctWordEpic, setLettersEpic };

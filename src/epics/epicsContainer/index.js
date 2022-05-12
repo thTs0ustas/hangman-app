@@ -1,16 +1,15 @@
 import {
-  epicTries,
-  epicCorrectness,
-  epicLetters,
+  settingGapsEpic,
+  correctWordEpic,
+  setLettersEpic,
 } from "./settingWordAndLettersEpic";
-import { epicWords, epicRestart } from "./startAndRestartEpic";
-import { epicWinningOrLosing } from "./titleEpic";
+import { newWordsEpic, restartEpic } from "./startAndRestartEpic";
+import { refreshStatusEpic } from "./titleEpic";
 
 export {
-  epicTries,
-  epicCorrectness,
-  epicLetters,
-  epicWords,
-  epicRestart,
-  epicWinningOrLosing,
+  settingGapsEpic,
+  correctWordEpic,
+  setLettersEpic,
+  newWordsEpic, restartEpic,
+  refreshStatusEpic,
 };

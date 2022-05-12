@@ -1,18 +1,16 @@
 import { combineEpics } from "redux-observable";
 import {
-  epicTries,
-  epicCorrectness,
-  epicLetters,
-  epicWords,
-  epicRestart,
-  epicWinningOrLosing,
+  settingGapsEpic,
+  correctWordEpic,
+  setLettersEpic,
+  newWordsEpic, restartEpic,
+  refreshStatusEpic,
 } from "./epicsContainer";
 
 export default combineEpics(
-  epicTries,
-  epicCorrectness,
-  epicLetters,
-  epicWords,
-  epicRestart,
-  epicWinningOrLosing
+  settingGapsEpic,
+  correctWordEpic,
+  setLettersEpic,
+  newWordsEpic, restartEpic,
+  refreshStatusEpic,
 );
