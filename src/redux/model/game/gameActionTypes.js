@@ -1,7 +1,0 @@
-export const LETS_START = "LETS_START";
-export const SETTING_GAME = "SETTING_GAME";
-export const WRONG_TRY = "WRONG_TRY";
-export const CORRECT_LETTER = "CORRECT_LETTER";
-export const SETTING_WINNER_LOSER = "SETTING_WINNER_LOSER";
-export const WINNER_OR_LOSER = "WINNER_OR_LOSER";
-export const RESTART = "RESTART";

@@ -1,12 +1,10 @@
-export { gapsAndLettersReducer } from "./lettersAndGapsReducer";
 export {
-  SETTING_GAPS,
-  SETTING_LETTER,
-  SETTING_NEW_GAPS,
-} from "./lettersAndGapsActionTypes";
-
-export {
-  settingGaps,
-  settingNewGaps,
+  default as lettersAndGapsReducer,
+  settingGame,
   settingLetter,
-} from "./lettersAndGapsActions";
+  wrongTries,
+  letterGapsRestart,
+} from './lettersAndGapsReducer';
+
+export { settingGaps, settingLetters, settingNewGaps } from './actions/lettersAndGapsActions';
+export { letterGapsActionTypes } from './actions/lettersAndGapsActionTypes';

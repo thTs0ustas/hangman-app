@@ -1,5 +1,5 @@
-import { combineReducers } from "redux";
-import { wordReducer, gapsAndLettersReducer, gameReducer } from "./model";
+import { combineReducers } from 'redux';
+import { wordReducer, gapsAndLettersReducer, gameReducer } from './model';
 
 export const rootReducer = combineReducers({
   words: wordReducer,
@@ -8,15 +8,17 @@ export const rootReducer = combineReducers({
 });
 
 export {
-  letsStart,
-  settingGame,
-  wrongTry,
-  correctTry,
-  settingWinnerOrLoser,
   winnerOrLoser,
-  restart,
-  settingWord,
+  gameRestart,
+  settingWords,
   settingGaps,
   settingNewGaps,
+  wordsRestart,
+  settingGame,
   settingLetter,
-} from "./model";
+  wrongTries,
+  letterGapsRestart,
+  letsStart,
+  setLetter,
+  restart,
+} from './model';

@@ -1,4 +1,5 @@
-import { INITIAL_STATE } from "../../INITIAL_STATE";
+import { createSlice } from '@reduxjs/toolkit';
+import { INITIAL_STATE } from '../../INITIAL_STATE';
 
 const init = {
   correctTries: INITIAL_STATE.tries,
@@ -6,30 +7,27 @@ const init = {
   guess: INITIAL_STATE.guess,
 };
 
-export const gapsAndLettersReducer = (state = init, action) => {
-  switch (action.type) {
-    case "SETTING_GAME":
-      return {
-        ...state,
-        correctTries: action.payload.tries,
-        wrongTries: action.payload.wrongTries,
-      };
+export const gapsAndLettersReducer = createSlice({
+  name: 'gapsAndLetters',
+  initialState: init,
+  reducers: {
+    settingGame: (state, action) => {
+      state.correctTries = action.payload.tries;
+      state.wrongTries = action.payload.wrongTries;
+    },
+    settingLetter: (state, action) => {
+      state.guess.push(action.payload);
+      state.correctTries = ++state.tries; // ??????
+    },
+    wrongTries: (state) => {
+      state.wrongTries = ++state.wrongTries;
+    },
+    letterGapsRestart: (state) => {
+      state.correctTries = init;
+    },
+  },
+});
 
-    case "SETTING_LETTER":
-      return {
-        ...state,
-        correctTries: ++state.tries,
-        guess: [...state.guess, action.payload],
-      };
-
-    case "WRONG_TRY":
-      return {
-        ...state,
-        wrongTries: ++state.wrongTries,
-      };
-    case "RESTART":
-      return Object.assign({}, init);
-    default:
-      return state;
-  }
-};
+export const { settingGame, settingLetter, wrongTries, letterGapsRestart } =
+  gapsAndLettersReducer.actions;
+export default gapsAndLettersReducer.reducer;

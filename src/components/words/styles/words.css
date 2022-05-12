@@ -40,3 +40,10 @@ p {
   flex-wrap: wrap;
   justify-content: center;
 }
+.status {
+  height: 40px;
+  text-align: center;
+  fontsize: 22px;
+  margintop: 0.75rem;
+  fontweight: 600;
+}

@@ -1,10 +1,4 @@
-import React, { Suspense } from "react";
+import React from 'react';
 
-const Words = React.lazy(() => import("../words"));
-export const Game = () => {
-  return (
-    <Suspense fallback={<div>Loading word....</div>}>
-      <Words />
-    </Suspense>
-  );
-};
+import { Words } from '../words';
+export const Game = () => <Words />;

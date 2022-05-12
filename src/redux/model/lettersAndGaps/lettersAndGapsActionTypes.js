@@ -1,3 +1,0 @@
-export const SETTING_GAPS = "SETTING_GAPS";
-export const SETTING_LETTER = "SETTING_LETTER";
-export const SETTING_NEW_GAPS = "SETTING_NEW_GAPS";

@@ -1,7 +1,7 @@
 import { ofType } from "redux-observable";
 import { map, mapTo, tap } from "rxjs/operators";
 
-import { rword } from "rword";
+import randomWords from "random-words";
 
 import { RESTART } from "../../redux/model";
 import { settingWord, letsStart } from "../../redux";
@@ -9,7 +9,8 @@ import { settingWord, letsStart } from "../../redux";
 const epicWords = (action$) =>
   action$.pipe(
     ofType("LETS_START"),
-    map(() => rword.generate(1, { length: "4-12" })),
+    map(() => randomWords({ exactly: 1 })),
+    map((word) => word[0]),
     tap(console.log),
     map(settingWord)
   );
