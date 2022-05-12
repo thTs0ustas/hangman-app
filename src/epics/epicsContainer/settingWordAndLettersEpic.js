@@ -1,12 +1,12 @@
 import { map } from 'rxjs/operators';
 import { ofType } from 'redux-observable';
 
-import { correctTry, settingGaps, settingNewGaps, wrongTry } from '../../redux';
+import { correctLetter, settingGaps, settingNewGaps, wrongTries } from '../../redux';
 import { actionTypes } from '../../redux/model/actions/actionTypes';
 
 const epicTries = (action$) =>
   action$.pipe(
-    ofType('SETTING_WORD'),
+    ofType('word/settingWords'),
     map((action) => settingGaps(Array(action.payload.length).fill('_ ')))
   );
 
@@ -15,14 +15,14 @@ const epicLetters = (action$, state$) =>
     ofType(actionTypes.SET_LETTER),
     map(({ payload }) => {
       const { word } = state$.value.words;
-      if (!word.includes(payload)) return wrongTry();
-      return correctTry(payload);
+      if (!word.includes(payload)) return wrongTries();
+      return correctLetter(payload);
     })
   );
 
 const epicCorrectness = (action$, state$) =>
   action$.pipe(
-    ofType('CORRECT_LETTER'),
+    ofType(actionTypes.CORRECT_LETTER),
     map(() =>
       settingNewGaps(
         [...state$.value.words.word]

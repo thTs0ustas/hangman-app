@@ -1,13 +1,14 @@
 import { combineReducers } from 'redux';
-import { wordReducer, gapsAndLettersReducer, gameReducer } from './model';
+import { wordReducer, lettersAndGapsReducer, gameReducer } from './model';
 
 export const rootReducer = combineReducers({
   words: wordReducer,
-  tries: gapsAndLettersReducer,
+  tries: lettersAndGapsReducer,
   game: gameReducer,
 });
 
 export {
+  correctLetter,
   winnerOrLoser,
   gameRestart,
   settingWords,

@@ -17,7 +17,7 @@ export const gapsAndLettersReducer = createSlice({
     },
     settingLetter: (state, action) => {
       state.guess.push(action.payload);
-      state.correctTries = ++state.tries; // ??????
+      state.correctTries = ++state.tries;
     },
     wrongTries: (state) => {
       state.wrongTries = ++state.wrongTries;

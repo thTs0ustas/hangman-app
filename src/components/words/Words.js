@@ -1,5 +1,5 @@
 import React from 'react';
-import '.styles/words.css';
+import './styles/words.css';
 
 import { Buttons } from '../button/Button';
 

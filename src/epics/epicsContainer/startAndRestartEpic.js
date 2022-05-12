@@ -1,21 +1,18 @@
-import { ofType } from "redux-observable";
-import { map, mapTo, tap } from "rxjs/operators";
+import { ofType } from 'redux-observable';
+import { map, mergeMap } from 'rxjs/operators';
 
-import randomWords from "random-words";
+import randomWords from 'random-words';
 
-import { RESTART } from "../../redux/model";
-import { settingWord, letsStart } from "../../redux";
+import { settingWords, letsStart, winnerOrLoser } from '../../redux';
+import { actionTypes } from '../../redux/model/actions/actionTypes';
+
+const epicRestart = (action$) => action$.pipe(ofType(actionTypes.RESTART), map(letsStart));
 
 const epicWords = (action$) =>
   action$.pipe(
-    ofType("LETS_START"),
-    map(() => randomWords({ exactly: 1 })),
-    map((word) => word[0]),
-    tap(console.log),
-    map(settingWord)
+    ofType(actionTypes.LETS_START),
+    map(() => randomWords({ exactly: 1, join: ' ' })),
+    mergeMap((word) => [settingWords(word), winnerOrLoser('Lets Play')])
   );
-
-const epicRestart = (action$) =>
-  action$.pipe(ofType(RESTART), mapTo(letsStart()));
 
 export { epicWords, epicRestart };

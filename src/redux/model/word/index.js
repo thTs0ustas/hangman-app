@@ -1,9 +1,7 @@
 export {
   default as wordReducer,
-  settingWord,
+  settingWords,
   settingGaps,
   settingNewGaps,
   wordsRestart,
 } from './wordReducer';
-
-export { wordActionTypes } from './actions/wordActionTypes';

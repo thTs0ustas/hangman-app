@@ -1,7 +1,8 @@
 export const INITIAL_STATE = {
-  word: "",
+  word: '',
   tries: 0,
   guess: [],
   wrongTries: 0,
-  title: "",
+  correctTries: 0,
+  title: '',
 };

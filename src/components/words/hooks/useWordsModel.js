@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { wordsSelector } from './selector';
-import { letsStart, restart, settingLetter, winnerOrLosser } from '../../redux';
+import { wordsSelector } from '../selectors/selector';
+import { letsStart, restart, settingLetter, winnerOrLoser } from '../../../redux';
 
-import { Buttons } from '../button/Button';
+import { Buttons } from '../../button/Button';
 
 export const useWordsModel = () => {
   const dispatch = useDispatch();
@@ -12,15 +12,15 @@ export const useWordsModel = () => {
   const dispatchers = {
     setStart: () => dispatch(letsStart()),
     setRestart: () => dispatch(restart()),
-    winnerLoser: () => dispatch(winnerOrLosser()),
+    winnerLoser: () => dispatch(winnerOrLoser()),
     setLetter: (letter) => dispatch(settingLetter(letter)),
   };
 
   const disable = (letter) =>
     !words.word || tries.guess.includes(letter) || game.title !== 'Lets Play';
 
-  const letterMap = (mapping) =>
-    mapping.map((letter, index) => (
+  const letterMap = (letters) =>
+    letters.map((letter, index) => (
       <React.Fragment key={index}>
         <Buttons
           disabled={disable(letter)}

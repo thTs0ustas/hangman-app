@@ -4,5 +4,5 @@ import { actionTypes } from './actionTypes';
 const letsStart = createAction(actionTypes.LETS_START);
 const setLetter = createAction(actionTypes.SET_LETTER);
 const restart = createAction(actionTypes.RESTART);
-
-export { letsStart, setLetter, restart };
+const correctLetter = createAction(actionTypes.CORRECT_LETTER);
+export { letsStart, setLetter, restart, correctLetter };

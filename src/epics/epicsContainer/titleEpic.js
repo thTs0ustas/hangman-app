@@ -1,10 +1,11 @@
 import { map } from 'rxjs/operators';
 import { ofType } from 'redux-observable';
-import { gameActionTypes, winnerOrLoser } from '../../redux/model';
+import { winnerOrLoser } from '../../redux/model';
+import { actionTypes } from '../../redux/model/actions/actionTypes';
 
 const epicWinningOrLosing = (action$, state$) =>
   action$.pipe(
-    ofType(gameActionTypes.SETTING_WINNER_LOSER),
+    ofType(actionTypes.SETTING_WINNER_LOSER),
     map(() => {
       const {
         words: { word, gaps },

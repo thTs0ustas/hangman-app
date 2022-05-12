@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const gameReducer = createSlice({
   name: 'game',
-  initialState: INITIAL_STATE.title,
+  initialState: { title: INITIAL_STATE.title },
   reducers: {
     winnerOrLoser: (state, action) => {
       state.title = action.payload;

@@ -5,6 +5,3 @@ export {
   wrongTries,
   letterGapsRestart,
 } from './lettersAndGapsReducer';
-
-export { settingGaps, settingLetters, settingNewGaps } from './actions/lettersAndGapsActions';
-export { letterGapsActionTypes } from './actions/lettersAndGapsActionTypes';
