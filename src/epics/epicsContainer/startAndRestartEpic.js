@@ -3,10 +3,20 @@ import { map, mergeMap } from 'rxjs/operators';
 
 import randomWords from 'random-words';
 
-import { settingWords, letsStart, winnerOrLoser } from '../../redux';
-import { actionTypes } from '../../redux/model/actions/actionTypes';
+import {
+  settingWords,
+  winnerOrLoser,
+  gameRestart,
+  wordsRestart,
+  letterGapsRestart,
+  actionTypes,
+} from '../../features';
 
-const epicRestart = (action$) => action$.pipe(ofType(actionTypes.RESTART), map(letsStart));
+const epicRestart = (action$) =>
+  action$.pipe(
+    ofType(actionTypes.RESTART),
+    mergeMap(() => [gameRestart(), wordsRestart(), letterGapsRestart()])
+  );
 
 const epicWords = (action$) =>
   action$.pipe(

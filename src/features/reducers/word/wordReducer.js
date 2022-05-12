@@ -1,11 +1,10 @@
-import { INITIAL_STATE } from '../../INITIAL_STATE';
+import { INITIAL_STATE } from '../../initialState/INITIAL_STATE';
 import { createSlice } from '@reduxjs/toolkit';
 
 const init = {
   word: INITIAL_STATE.word,
   gaps: Array(INITIAL_STATE.word.length).fill('_').join(' '), //INITIAL_STATE.gaps,
 };
-// INITIAL_STATE.gaps = Array(INITIAL_STATE.word.length).fill("_").join(" ");
 
 export const wordReducer = createSlice({
   name: 'word',
@@ -21,7 +20,8 @@ export const wordReducer = createSlice({
       state.gaps = action.payload;
     },
     wordsRestart: (state) => {
-      state.word = init;
+      state.word = init.word;
+      state.gaps = init.gaps;
     },
   },
 });

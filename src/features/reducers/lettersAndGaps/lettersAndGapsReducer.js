@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { INITIAL_STATE } from '../../INITIAL_STATE';
-
+import { INITIAL_STATE } from '../../initialState/INITIAL_STATE';
 const init = {
   correctTries: INITIAL_STATE.tries,
   wrongTries: INITIAL_STATE.wrongTries,
@@ -17,13 +16,16 @@ export const gapsAndLettersReducer = createSlice({
     },
     settingLetter: (state, action) => {
       state.guess.push(action.payload);
-      state.correctTries = ++state.tries;
+      state.correctTries = state.tries + 1;
     },
-    wrongTries: (state) => {
-      state.wrongTries = ++state.wrongTries;
+    wrongTries: (state, action) => {
+      state.wrongTries = state.wrongTries + 1;
+      state.guess.push(action.payload);
     },
     letterGapsRestart: (state) => {
-      state.correctTries = init;
+      state.correctTries = init.correctTries;
+      state.wrongTries = init.wrongTries;
+      state.guess = init.guess;
     },
   },
 });

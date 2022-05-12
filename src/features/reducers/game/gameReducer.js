@@ -1,4 +1,4 @@
-import { INITIAL_STATE } from '../../INITIAL_STATE';
+import { INITIAL_STATE } from '../../initialState/INITIAL_STATE';
 import { createSlice } from '@reduxjs/toolkit';
 
 export const gameReducer = createSlice({

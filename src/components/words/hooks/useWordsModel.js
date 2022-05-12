@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { wordsSelector } from '../selectors/selector';
-import { letsStart, restart, settingLetter, winnerOrLoser } from '../../../redux';
+import { letsStart, restart, setLetter, statusCheck } from '../../../features';
 
 import { Buttons } from '../../button/Button';
 
@@ -12,8 +12,8 @@ export const useWordsModel = () => {
   const dispatchers = {
     setStart: () => dispatch(letsStart()),
     setRestart: () => dispatch(restart()),
-    winnerLoser: () => dispatch(winnerOrLoser()),
-    setLetter: (letter) => dispatch(settingLetter(letter)),
+    winnerLoser: () => dispatch(statusCheck()),
+    setLetter: (letter) => dispatch(setLetter(letter)),
   };
 
   const disable = (letter) =>

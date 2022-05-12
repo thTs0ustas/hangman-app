@@ -9,5 +9,3 @@ export {
   wrongTries,
   letterGapsRestart,
 } from './lettersAndGaps';
-
-export { letsStart, setLetter, restart, correctLetter } from './actions/actions';
