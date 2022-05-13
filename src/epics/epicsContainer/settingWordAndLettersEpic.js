@@ -32,7 +32,7 @@ const correctWordEpic = (action$, state$) =>
     map(() =>
       settingNewGaps(
         [...state$.value.words.word]
-          .map((e) => (state$.value.tries.guess.includes(e) ? e : '_ '))
+          .map((e) => (state$.value.tries.guess.includes(e) ? `${e} ` : '_ '))
           .join('')
       )
     )
